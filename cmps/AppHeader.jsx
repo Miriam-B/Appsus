@@ -11,8 +11,8 @@ class _AppHeader extends React.Component {
           <ul className="clean-list">
             <li><NavLink to="/about">About</NavLink></li>
             <li><NavLink to="/">Home</NavLink></li>
-            <li><NavLink to="/">Notes</NavLink></li>
-            <li><NavLink to="/">Email</NavLink></li>
+            <li><NavLink to="/notes">Notes</NavLink></li>
+            <li><NavLink to="/email">Email</NavLink></li>
           </ul>
         </nav>
       </header>

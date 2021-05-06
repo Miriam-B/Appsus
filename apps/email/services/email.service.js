@@ -31,8 +31,8 @@ function generateEmails() {
     },
     {
         id: utilService.makeId(),
-        sender: 'shlomi@frieinds.com',
-        senderName: 'Shlomi',
+        sender: 'lordi@frieinds.com',
+        senderName: 'Ahasuerus',
         subject: 'About the new employee?',
         body: 'Lorem ipsum potatoes and monkeys!',
         isRead: false,
@@ -131,7 +131,10 @@ function setRead(emailToUpdate) {
     var emailIdx = gEmails.findIndex(function (email) {
         return emailToUpdate.id === email.id;
     })
+    emailToUpdate.isRead = true;
     gEmails.splice(emailIdx, 1, emailToUpdate)
     _saveEmailsToStorage();
+
+    eventBusService.emit('emails-updated');
     return Promise.resolve(emailToUpdate)
 }

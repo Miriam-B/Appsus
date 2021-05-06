@@ -1,0 +1,21 @@
+.email-app {
+    padding: 5px 10px;
+}
+.email-preview {
+    cursor: pointer;
+    box-shadow: 0 0px 3px 2px #cecece78;
+}
+
+.email-filter {
+    padding: 15px 0;
+}
+.email-filter label:not(:first-of-type) {
+    height: 100%;
+}
+.email-filter input {
+    height: 100%;
+}
+
+.email-filter-search-text {
+    height: 100%;
+}

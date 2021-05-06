@@ -13,7 +13,7 @@ export function App() {
     return (
         <Router>
             <AppHeader />
-            <main>
+            <main className="page-container">
                 <Switch className="navbar">
                     <Route component={AboutUs} path="/about" />
                     <Route component={EmailApp} path="/email" />

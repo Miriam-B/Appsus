@@ -2,14 +2,30 @@ const { NavLink } = ReactRouterDOM
 
 export function EmailPreview({ email }) {
   return (
-    <NavLink to={`/email/${email.id}`}>
-      <article className="email-preview">
-        <h1>{email.senderName + ' <' + email.sender + '>'}</h1>
-        <h2>{email.subject}</h2>
-        <h2>{email.body > 30 ? email.body.substring(0, 27) + '...' : email.body}</h2>
-        <p>{getTime(email.sentAt)}</p>
-      </article>
-    </NavLink>
+    <div className="card">
+      <NavLink to={`/email/${email.id}`}>
+        <article className="email-preview text-justify">
+        <div className="input-group">
+            <div className="input-group-addon">
+              <span class="input-group-text" >From:</span>
+            </div>
+            <div className="form-control"> {email.senderName + ' <' + email.sender + '>'}</div>
+            <div className="input-group-addon">
+              <span class="input-group-text" >{getTime(email.sentAt)} </span>
+            </div>
+          </div>
+          <div className="input-group">
+            <div className="input-group-addon">
+              <span class="input-group-text" >Subject:  </span>
+            </div>
+            <div className="form-control"> {email.subject}</div>
+          </div>
+          <div className="input-group">
+          <div className="form-control"> {email.body > 30 ? email.body.substring(0, 27) + '...' : email.body}</div>
+          </div>
+        </article>
+      </NavLink>
+    </div>
   )
 }
 
@@ -30,7 +46,7 @@ export function getTime(timestamp) {
 function formatAMPM(date) {
   var hours = date.getHours();
   var minutes = date.getMinutes();
-  var ampm = hours >= 12 ? 'pm' : 'am';
+  var ampm = hours >= 12 ? 'PM' : 'AM';
   hours = hours % 12;
   hours = hours ? hours : 12;
   minutes = minutes < 10 ? '0' + minutes : minutes;

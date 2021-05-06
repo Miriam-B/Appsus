@@ -12,7 +12,9 @@ export class EmailDetails extends React.Component {
         const id = this.props.match.params.emailId
         emailService.getEmailById(id).then(email => {
             if (!email) return this.props.history.push('/')
-            this.setState({ email: email })
+            this.setState({ email: email }, () => {
+                emailService.setRead(email);
+            })
         })
     }
 
@@ -36,7 +38,7 @@ export class EmailDetails extends React.Component {
                     <h1>{email.senderName + ' <' + email.sender + '>'}</h1>
                     <h2>{email.subject}</h2>
                     <h2>{email.body}</h2>
-                    <p>{getTime(email.timestamp)}</p>
+                    <p>{getTime(email.sentAt)}</p>
                     <NavLink to={`/email`}>Back</NavLink>
                     <button onClick={this.onRemoveEmail}>Delete</button>
                     </article>

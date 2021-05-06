@@ -6,7 +6,9 @@ import { eventBusService } from '../../../services/event-bus.service.js'
 export const emailService = {
     query,
     getEmailById,
-    deleteEmail
+    deleteEmail,
+    addEmail,
+    setRead
 }
 
 const KEY = 'emails';
@@ -33,7 +35,7 @@ function generateEmails() {
         senderName: 'Shlomi',
         subject: 'About the new employee?',
         body: 'Lorem ipsum potatoes and monkeys!',
-        isRead: true,
+        isRead: false,
         sentAt: 1551133930594
     },
     {
@@ -42,7 +44,7 @@ function generateEmails() {
         senderName: 'Lisa',
         subject: 'Hello, welcome to potato land',
         body: 'Lorem ipsum potatoes and monkeys!',
-        isRead: true,
+        isRead: false,
         sentAt: 15511000000000
     },
     {
@@ -51,7 +53,7 @@ function generateEmails() {
         senderName: 'DJ Hi-tech',
         subject: 'How much is the fish?',
         body: 'Lorem ipsum potatoes and monkeys!',
-        isRead: true,
+        isRead: false,
         sentAt: 1551100930594
     },
     {
@@ -60,7 +62,7 @@ function generateEmails() {
         senderName: 'Darth Shreider',
         subject: 'Wassap? I am your brother',
         body: 'I did the DNA test',
-        isRead: true,
+        isRead: false,
         sentAt: 1550133930594
     }
     ];
@@ -110,17 +112,26 @@ function _loadEmailFromStorage() {
 //     return car.id ? _updateCar(car) : _addCar(car)
 // }
 
-function _addEmail(emailToAdd) {
-    gEmails.unshift(email)
+function addEmail(emailToAdd) {
+    gEmails.unshift({
+        id: utilService.makeId(),
+        sender: emailToAdd.sender,
+        senderName: emailToAdd.sender,
+        subject: emailToAdd.subject,
+        body: emailToAdd.body,
+        isRead: false,
+        sentAt: +new Date()
+    });
+
     _saveEmailsToStorage();
-    return Promise.resolve(email)
+    return Promise.resolve()
 }
 
-// function _updateCar(carToUpdate) {
-//     var carIdx = gCars.findIndex(function (car) {
-//         return car.id === carToUpdate.id;
-//     })
-//     gCars.splice(carIdx, 1, carToUpdate)
-//     _saveCarsToStorage();
-//     return Promise.resolve(carToUpdate)
-// }
+function setRead(emailToUpdate) {
+    var emailIdx = gEmails.findIndex(function (email) {
+        return emailToUpdate.id === email.id;
+    })
+    gEmails.splice(emailIdx, 1, emailToUpdate)
+    _saveEmailsToStorage();
+    return Promise.resolve(emailToUpdate)
+}

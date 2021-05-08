@@ -27,7 +27,8 @@ function generateEmails() {
         subject: 'Wassap? how are youuuuu doin?',
         body: 'Pick up!',
         isRead: false,
-        sentAt: 1551133930594
+        sentAt: 1551133930594,
+        folder: 'inbox'
     },
     {
         id: utilService.makeId(),
@@ -36,7 +37,8 @@ function generateEmails() {
         subject: 'About the new employee?',
         body: 'Lorem ipsum potatoes and monkeys!',
         isRead: false,
-        sentAt: 1551133930594
+        sentAt: 1551133930594,
+        folder: 'inbox'
     },
     {
         id: utilService.makeId(),
@@ -45,7 +47,8 @@ function generateEmails() {
         subject: 'Hello, welcome to potato land',
         body: 'Lorem ipsum potatoes and monkeys!',
         isRead: false,
-        sentAt: 15511000000000
+        sentAt: 15511000000000,
+        folder: 'inbox'
     },
     {
         id: utilService.makeId(),
@@ -54,7 +57,8 @@ function generateEmails() {
         subject: 'How much is the fish?',
         body: 'Lorem ipsum potatoes and monkeys!',
         isRead: false,
-        sentAt: 1551100930594
+        sentAt: 1551100930594,
+        folder: 'sent'
     },
     {
         id: utilService.makeId(),
@@ -63,7 +67,8 @@ function generateEmails() {
         subject: 'Wassap? I am your brother',
         body: 'I did the DNA test',
         isRead: false,
-        sentAt: 1550133930594
+        sentAt: 1550133930594,
+        folder: 'drafts'
     }
     ];
 }

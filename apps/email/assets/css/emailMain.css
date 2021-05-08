@@ -1,5 +1,5 @@
 .email-app {
-    padding: 5px 10px;
+    margin: 5px;
 }
 .email-preview {
     cursor: pointer;
@@ -7,7 +7,7 @@
 }
 
 .email-filter {
-    padding: 15px 0;
+    width: 100%;
 }
 .email-filter label:not(:first-of-type) {
     height: 100%;
@@ -18,4 +18,10 @@
 
 .email-filter-search-text {
     height: 100%;
+}
+
+.sidebar {
+    background-color: rgb(117, 59, 117);
+    padding-left: 10px;
+    border-radius: 7px;
 }

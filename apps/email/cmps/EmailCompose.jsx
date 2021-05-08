@@ -28,7 +28,7 @@ export class EmailCompose extends React.Component {
 
     render() {
         return (
-            <section>
+            <section className="card">
                 <form onSubmit={this.sendEmail}>
                 <div className="input-group">
                     <div className="input-group-text">
@@ -48,8 +48,6 @@ export class EmailCompose extends React.Component {
                     </div>
                     <textarea className="form-control" name="body" rows="10" onChange={this.onChanged}></textarea>
                 </div>
-                
-                <br/>
                 <div className="input-group">
                     <input className="btn btn-primary" type="submit"/>
                     <NavLink className="btn btn-dark" to="/email">Close</NavLink>

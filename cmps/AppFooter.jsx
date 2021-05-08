@@ -1,5 +1,5 @@
 export function AppFooter() {
-    return <footer className="app-footer page-footer font-small blue">
+    return <footer className="app-footer page-footer font-small blue fixed-bottom">
 
         <div className="footer">
             <div className="container">

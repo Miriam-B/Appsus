@@ -1,6 +1,6 @@
 import { EmailPreview } from './EmailPreview.jsx'
 
-export function EmailList({ emails, selectedEmail, setSelectedEmail}) {
+export function EmailList({ emails, setSelectedEmail}) {
   return (
     <div className="email-list">
       { emails.map(email => 

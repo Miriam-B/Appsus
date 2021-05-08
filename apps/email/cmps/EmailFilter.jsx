@@ -28,14 +28,14 @@ export class EmailFilter extends React.Component {
       const { text, onlyUnread } = this.state.filterBy
       return (
   
-        <form className="email-filter input-group">
+        <form className="email-filter card input-group">
           <div className="input-group">
             <div className="input-group-addon">
               <span className="input-group-text email-filter-search-text" id="basic-addon1">
                   Search  
               </span>
             </div>
-            <div className="input-group-addon">
+            <div className="form-control">
             <input className="email-filter-text" type="text" id="text" name="text" value={text} onChange={this.handleChange} className="form-control" aria-label="Search"/>
             </div>
             <div className="input-group-append">

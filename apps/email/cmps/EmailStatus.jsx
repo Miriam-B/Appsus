@@ -11,6 +11,9 @@ export class EmailStatus extends React.Component {
     }
     
     render() {
-        return <span className="badge">{this.getNumOfUnread()}/{this.getNumOfEmails()}</span>
+        return (<span className="email-status">
+        <span className="badge bg-primary rounded-pill">{this.getNumOfUnread()}</span>
+        <span className="badge rounded-pill">{this.getNumOfEmails()}</span>
+        </span>)
     }
 }

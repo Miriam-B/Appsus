@@ -60,7 +60,7 @@ export class EmailApp extends React.Component {
         return <div className="email-app container">
                 <div className="row">
                     <SideBar emails={this.state.emails}/>
-                    <div className="sidenav-page col-sm-10">
+                    <div className="sidenav-page col-sm-9">
                         <Router>
                             <Switch className="email-navbar">
                                 <Route component={EmailCompose} path='/email/compose' />

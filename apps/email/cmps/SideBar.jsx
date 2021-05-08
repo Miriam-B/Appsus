@@ -5,7 +5,7 @@ const { NavLink } = ReactRouterDOM;
 export class SideBar extends React.Component {
   render() {
     return (
-      <div className="sidenav col-sm-3 list-group">
+      <div className="sidenav col-sm-4 list-group">
           <ul className="sidebar btn-toggle-nav list-unstyled fw-normal pb-1 medium">
               <li className="nav-item">
                   <div className="btn btn-success">

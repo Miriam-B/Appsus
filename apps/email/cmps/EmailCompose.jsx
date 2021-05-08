@@ -20,10 +20,19 @@ export class EmailCompose extends React.Component {
         }))
     }
     
+    saveDraft = () => {
+        if (this.state.email.subject != '' ||
+            this.state.email.body != '') {
+            emailService.addDraft(this.state.email);
+            this.props.history.push('/email/inbox');
+            eventBusService.emit('emails-updated');
+        }
+    }
+
     sendEmail = () => {
-        emailService.addEmail(this.state.email);
-        this.props.history.push('/email/');
-        eventBusService.emit('emails-updated');
+            emailService.addEmail(this.state.email);
+            this.props.history.push('/email/inbox');
+            eventBusService.emit('emails-updated');
     }
 
     render() {
@@ -50,7 +59,7 @@ export class EmailCompose extends React.Component {
                 </div>
                 <div className="input-group">
                     <input className="btn btn-primary" type="submit"/>
-                    <NavLink className="btn btn-dark" to="/email">Close</NavLink>
+                    <button className="btn btn-dark" onClick={this.saveDraft}>Close</button>
                 </div>`
                 </form>
             </section>

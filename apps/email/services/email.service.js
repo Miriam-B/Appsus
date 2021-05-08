@@ -8,6 +8,7 @@ export const emailService = {
     getEmailById,
     deleteEmail,
     addEmail,
+    addDraft,
     setRead
 }
 
@@ -24,6 +25,8 @@ function generateEmails() {
         id: utilService.makeId(),
         sender: 'joe@frieinds.com',
         senderName: 'Joe',
+        receiver: '<me@me.com>',
+        receiverName: 'Me',
         subject: 'Wassap? how are youuuuu doin?',
         body: 'Pick up!',
         isRead: false,
@@ -34,6 +37,8 @@ function generateEmails() {
         id: utilService.makeId(),
         sender: 'lordi@frieinds.com',
         senderName: 'Ahasuerus',
+        receiver: '<me@me.com>',
+        receiverName: 'Me',
         subject: 'About the new employee?',
         body: 'Lorem ipsum potatoes and monkeys!',
         isRead: false,
@@ -44,6 +49,8 @@ function generateEmails() {
         id: utilService.makeId(),
         sender: 'jossse@frieiands.com',
         senderName: 'Lisa',
+        receiver: '<me@me.com>',
+        receiverName: 'Me',
         subject: 'Hello, welcome to potato land',
         body: 'Lorem ipsum potatoes and monkeys!',
         isRead: false,
@@ -54,6 +61,8 @@ function generateEmails() {
         id: utilService.makeId(),
         sender: 'joe@frieaainds.com',
         senderName: 'DJ Hi-tech',
+        receiver: '<me@me.com>',
+        receiverName: 'Me',
         subject: 'How much is the fish?',
         body: 'Lorem ipsum potatoes and monkeys!',
         isRead: false,
@@ -64,6 +73,8 @@ function generateEmails() {
         id: utilService.makeId(),
         sender: 'joe@friaaeinds.com',
         senderName: 'Darth Shreider',
+        receiver: '<me@me.com>',
+        receiverName: 'Me',
         subject: 'Wassap? I am your brother',
         body: 'I did the DNA test',
         isRead: false,
@@ -122,10 +133,44 @@ function addEmail(emailToAdd) {
         id: utilService.makeId(),
         sender: emailToAdd.sender,
         senderName: emailToAdd.sender,
+        receiver: emailToAdd.sender,
+        receiverName: emailToAdd.sender,
         subject: emailToAdd.subject,
         body: emailToAdd.body,
         isRead: false,
-        sentAt: +new Date()
+        sentAt: +new Date(),
+        folder: 'sent'
+    });
+
+    gEmails.unshift({
+        id: utilService.makeId(),
+        sender: emailToAdd.sender,
+        senderName: emailToAdd.sender,
+        receiver: emailToAdd.sender,
+        receiverName: emailToAdd.senderName,
+        subject: emailToAdd.subject,
+        body: emailToAdd.body,
+        isRead: false,
+        sentAt: +new Date(),
+        folder: 'inbox'
+    });
+
+    _saveEmailsToStorage();
+    return Promise.resolve()
+}
+
+function addDraft(emailToAdd) {
+    gEmails.unshift({
+        id: utilService.makeId(),
+        sender: emailToAdd.sender,
+        senderName: emailToAdd.sender,
+        receiver: emailToAdd.sender,
+        receiverName: emailToAdd.sender,
+        subject: emailToAdd.subject,
+        body: emailToAdd.body,
+        isRead: false,
+        sentAt: +new Date(),
+        folder: 'drafts'
     });
 
     _saveEmailsToStorage();

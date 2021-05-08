@@ -43,33 +43,35 @@ export class EmailApp extends React.Component {
         this.setState({ selectedEmail: null })
     }
 
-    renderEmailList = () => {
+    renderEmailList = (props) => {
         const { emails, selectedEmailId } = this.state
 
         if (!emails) return <div>Loading...</div>
         const filter = this.state.filter;
 
         return <div className='app'>
-                
-                <EmailFilter filter={filter} onSetFilter={this.onSetFilter} />
-                <EmailList setSelectedEmail={this.state.selectedEmail} emails={emails} />
-                </div>
+            <h1 className="folder-name">{props.match.params.folderId}</h1>
+            <EmailFilter filter={filter} onSetFilter={this.onSetFilter} />
+            <EmailList setSelectedEmail={this.state.selectedEmail} emails={emails.
+                filter((email) => 
+                    props.match.params.folderId ? email.folder == props.match.params.folderId : true)} />
+        </div>
     }
 
     render() {
-        return <div className="email-app container">
+        return <section className="email-app container">
                 <div className="row">
                     <SideBar emails={this.state.emails}/>
-                    <div className="sidenav-page col-sm-9">
+                    <div className="sidenav-page col-sm-8">
                         <Router>
                             <Switch className="email-navbar">
                                 <Route component={EmailCompose} path='/email/compose' />
-                                <Route component={EmailDetails} path={'/email/:emailId'} />
-                                <Route component={this.renderEmailList} path='/email' />
+                                <Route component={EmailDetails} path={'/email/details/:emailId'} />
+                                <Route component={this.renderEmailList} path={'/email/:folderId'} />
                             </Switch>
                         </Router>
                     </div>
                 </div>
-            </div>
+            </section>
     }
 }

@@ -21,7 +21,12 @@
 }
 
 .sidebar {
-    background-color: rgb(117, 59, 117);
+    background-color: rgba(117, 59, 117, 0.850);
     padding-left: 10px;
     border-radius: 7px;
+}
+
+.folder-name {
+    text-transform: capitalize;
+    color: white;
 }

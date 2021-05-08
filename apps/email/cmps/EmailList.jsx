@@ -1,10 +1,13 @@
 import { EmailPreview } from './EmailPreview.jsx'
 
-export function EmailList({ emails, setSelectedEmail}) {
-  return (
-    <div className="email-list">
-      { emails.map(email => 
-        <EmailPreview email={email} key={email.id} setSelectedEmail={setSelectedEmail} />)}
-    </div>
-  )
+export class EmailList extends React.Component {
+
+  render() {
+    return (
+      <div className="email-list">
+        { this.props.emails.map(email => 
+          <EmailPreview email={email} key={email.id} setSelectedEmail={this.props.setSelectedEmail} />)}
+      </div>
+    )
+  }
 }

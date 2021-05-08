@@ -2,12 +2,12 @@ export class EmailStatus extends React.Component {
     getNumOfUnread = () => {
         return this.props.emails ? 
             this.props.emails.
-            filter(email => !email.isRead).length : 0;
+            filter(email => email.folder == 'inbox' && !email.isRead).length : 0;
     }
     
     getNumOfEmails = () => {
         return this.props.emails ? 
-            this.props.emails.length : 0;
+            this.props.emails.filter(email => email.folder == 'inbox').length : 0;
     }
     
     render() {

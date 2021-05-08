@@ -22,7 +22,7 @@ export class EmailDetails extends React.Component {
         const { email } = this.state
 
         emailService.deleteEmail(email.id).then(() => {
-            this.props.history.push('/email/');
+            this.props.history.push('/email/inbox');
         });
     }
 
@@ -55,6 +55,15 @@ export class EmailDetails extends React.Component {
                             </div>
                         </div>
                         <div className="input-group">
+
+                            <div className="input-group-text">
+                                To:
+                        </div>
+                            <div className="form-control">
+                                {email.receiverName + ' <' + email.receiver + '>'}
+                            </div>
+                        </div>
+                        <div className="input-group">
                             <div className="input-group-text">
                                 Subject:
                         </div>
@@ -71,7 +80,7 @@ export class EmailDetails extends React.Component {
                             </div>
                         </div> 
                         <div className="input-group">
-                            <NavLink className="btn btn-primary" to={`/email`}>Back</NavLink>
+                            <NavLink className="btn btn-primary" to={`/email/inbox`}>Back</NavLink>
                             <button className="btn btn-danger" onClick={this.onRemoveEmail}>Delete</button>
                         </div>
                     </article>
